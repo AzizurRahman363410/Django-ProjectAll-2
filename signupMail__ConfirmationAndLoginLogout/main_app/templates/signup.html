@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+{% load crispy_forms_tags %}
+SignUp Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-info py-2">SignUp Page</h1>
+<div class="row">
+    <div class="col-8 offset-2">
+        <form method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+
+            {% for field in form %}
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

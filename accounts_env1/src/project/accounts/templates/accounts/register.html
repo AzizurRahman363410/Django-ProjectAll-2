@@ -1,0 +1,31 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Registration Page {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Registration</h1>
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <h2>Registration</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <!--            <button type="submit"> Register</button>-->
+            <input class="btn btn-primary" type="submit" value="Registration">
+
+        </form>
+        if you have an already an account <a class="btn btn-outline-info my-3"
+                                             href="{% url 'accounts:login' %}"><strong>Login</strong></a>
+        instead
+    </div>
+</div>
+
+<script>
+$('.alert').alert()
+</script>
+{% endblock %}

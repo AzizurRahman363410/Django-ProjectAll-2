@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+{% load crispy_forms_tags %}
+Detail Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-warning py-2">Detail Page</h1>
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{user_form|crispy}}<br>
+            {{profile_form|crispy}}<br>
+            <input type="submit" value="Submit" class="form-control btn btn-outline-warning my-3">
+        </form>
+
+    </div>
+</div>
+
+{% endblock content %}

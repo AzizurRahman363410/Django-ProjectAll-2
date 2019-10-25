@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog list Page Title {% endblock %}
+
+{% block header %} Hi, Welcome to the world's most beautiful World Heritage Sites {% endblock %}
+
+
+{% block content %}
+<div class="row">
+    {% for blog in blog_list %}
+    <div class="col-4 mb-3">
+        <div class="card" onclick="window.location='{% url 'blog:detail' blog.id %}'">
+            <img class="card-img-top" src="{{ blog.image.url }}" alt="Card image cap"
+                 style="height:300px; object-fit:cover;">
+            <div class="card-body">
+                <a href="{% url 'blog:detail' blog.id %}"><h2 class="card-title">{{blog.title|truncatechars:18}}</h2>
+                </a>
+                <p class="card-text" style="height:120px;">{{blog.description|truncatechars:150}}</p>
+                <h6>Published By : {{blog.author.username}}</h6>
+                <p>{{blog.pub_date_pretty}}</p>
+                {% if user.is_authenticated %}
+                <a href="#" class="btn btn-primary">View</a>
+                <a href="{% url 'blog:update' blog.id %}" class="btn btn-warning">Update</a>
+                <a href="{% url 'blog:delete' blog.pk %}" class="btn btn-danger">Delate</a>
+                {% else %}
+                 <a href="#" class="btn btn-success form-control text-light font-weight-bold">Make a tour</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!--    Pagination begin-->
+<div class="row my-3">
+    <div class="col-12">
+        <div class="pagination text-center justify-content-center">
+    <span class="step-links">
+        {% if blog_list.has_previous %}
+        <!--            <a href="?page=1">&laquo; first</a>-->
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }}.
+        </span>
+        {% if blog_list.has_next %}
+            <a href="?page={{ blog_list.next_page_number }}">next</a>
+        <!--            <a href="?page={{ blog_list.paginator.num_pages }}">last &raquo;</a>-->
+        {% endif %}
+    </span>
+        </div>
+    </div>
+</div>
+
+<!--    Pagination end-->
+{% endblock %}

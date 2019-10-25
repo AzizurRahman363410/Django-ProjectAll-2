@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog Search Page Title {% endblock %}
+{% block header %}Hi, Welcome to blog Search Page {% endblock %}
+
+
+{% block content %}
+<h1>Search result for {{search_term}} </h1>
+<div class="row">
+    {% if blog_list %}
+    {% for blog in blog_list %}
+    <div class="col-6" onclick="window.location='{% url 'blog:detail' blog.id %}'">
+        <a href="{% url 'blog:detail' blog.id %}"><h2>Title: {{blog.title}}</h2></a>
+        <img class="img-fluid w-100" src="{{ blog.image.url }}" alt="" style="height:300px; object-fit:cover;">
+        <h4>{{blog.description}}</h4>
+        <h5>Published By : {{blog.author.username}}</h5>
+        <h5>{{blog.upload_date_pretty}}</h5>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="pl-3">
+         <h3> Bolg Post Not Found </h3>
+    </div>
+
+
+    {% endif %}
+</div>
+{% endblock %}

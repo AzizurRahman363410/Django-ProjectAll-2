@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Blog Create Page Title {% endblock %}
+{% block header %}Hi, Welcome to blog Delete Page {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6 offset-2">
+        <div class="card p-4 mt-4">
+            <form class="" method="post" action=" " enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy}}
+                <input type="submit" name="submit" value="Update" class="btn btn-success w-100 mt-md-5 py-2">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

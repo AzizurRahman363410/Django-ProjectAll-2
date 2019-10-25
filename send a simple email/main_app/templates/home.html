@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Home Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-warning py-2">Home Page</h1>
+<div class="row">
+  {% for product_list in all_prods %}
+  <div class="col-md-4 product simpleCart_shelfItem text-center">
+    <a href="#"><img src="{{ product_list.image.url }}" alt="" style="height: 435px;" /></a>
+    <div class="mask">
+      <a href="{% url 'detail' product_list.slug %}">Quick View</a>
+    </div>
+    <a class="product_name" href=#">{{product_list.title}}</a>
+    <p><a class="item_add" href="#"><i></i> <span class="item_price">${{product_list.price}}</span></a></p>
+    
+    
+    
+    <form action="" method="post">
+        {% for field in form.visible_fields %}
+        <h6>Size: {{ field }}</h6>
+        {% endfor %}
+
+  
+    </form>
+
+
+
+  </div>
+    {% endfor %}
+  </div>
+   
+
+
+
+{% endblock content %}

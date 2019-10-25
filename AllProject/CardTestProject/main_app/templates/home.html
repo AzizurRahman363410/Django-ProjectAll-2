@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Home Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-warning py-2">Home Page</h1>
+<div class="row">
+
+
+  {% for item in object_list %}
+  <div class="col-4">
+    <div class="card">
+      <img src="{{ item.image.url }}" class="card-img-top" alt="..." style="height: 300px;">
+      <div class="card-body">
+        <h4 class="text-info">{{item.get_category_display}}</h4>
+        <h5 class="card-title">{{item.title}}</h5>
+        <p class="card-text">{{item.description}}</p>
+        {% if item.discount_price %}
+        <span>${{item.price}}</span><br>
+        <del>${{item.discount_price}}</del>
+        {% else %}
+        <span>${{item.price}}</span><br>
+        {% endif %}
+          <br>
+        <!-- <a href="{% url 'detail' item.slug %}" class="btn btn-primary">Quick View</a> -->
+        <a href="{{ item.get_absolute_url }}" class="btn btn-primary form-control">Quick View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Display Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-warning py-2">Display All</h1>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        {% for post in new_post %}
+        <h4>{{post.title}}</h4>
+        <h4>{{post.n_fruit}}</h4>  <!-- it show database key value //// Not acceptable -->
+       <hr>
+        <h4>{{post.get_n_fruit_display}}</h4>  <!-- it show database value  -->
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

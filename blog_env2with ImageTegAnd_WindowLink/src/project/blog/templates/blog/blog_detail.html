@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog Detail Page Title {% endblock %}
+{% block header %} Hi, Welcome to blog Detail Page {% endblock %}
+
+{% block content %}
+<!--<h1 class="text-center py-5">Hi, Welcome to blog Detail Page </h1>-->
+<div class="row">
+    <div class="col-8 offset-2">
+       <div class="card">
+        <img class="card-img-top" src="{{ blog.image.url }}" alt="Card image cap"
+             style="height:500px;object-fit:cover;">
+        <div class="card-body">
+            <a href="{% url 'blog:detail' blog.id %}"><h2 class="card-title">{{blog.title|truncatechars:15}}</h2>
+            </a>
+            <p class="card-text">{{blog.description}}</p>
+            <h6>Published By : {{blog.author.username}}</h6>
+            <p>{{blog.pub_date_pretty}}</p>
+            {% if user.is_authenticated %}
+            <a href="#" class="btn btn-warning">Update</a>
+            <a href="{% url 'blog:delete' blog.pk %}" class="btn btn-danger">Delate</a>
+            {% endif %}
+        </div>
+    </div>
+
+    </div>
+</div>
+{% endblock %}

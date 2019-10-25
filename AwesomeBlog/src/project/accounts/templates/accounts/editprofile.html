@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block title %} Profile Page {% endblock %}
+
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-8 mt-5">
+        <div class="content-section">
+            <div class="media">
+                <a href=""><img class="rounded-circle account-img"
+                                src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static '../media/default.jpg' %}{% endif %}"></a>
+                <div class="media-body">
+                    <h2 class="account-heading">{{ user.username }}</h2>
+                    <p class="text-secondary">{{ user.email }}</p>
+                </div>
+            </div>
+            <!-- FORM HERE -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Profile Info</legend>
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="col-4 mt-5">
+        <h2>Our Sidebar </h2>
+        <p>The most basic list group is an unordered list with list items and the proper classes. </p>
+
+        <ul class="list-group">
+            <li class="list-group-item active">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

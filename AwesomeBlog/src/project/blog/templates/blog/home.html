@@ -1,0 +1,39 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+{% block title %}
+Home page
+{% endblock  %}
+
+{% block content %}
+<div class="row">
+    <div class="col-8 mt-5">
+         {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d,Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+
+    </div>
+    <div class="col-4 mt-5">
+        <h2>Our Sidebar </h2>
+        <p>The most basic list group is an unordered list with list items and the proper classes. </p>
+
+
+        <ul class="list-group">
+            <li class="list-group-item active">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock  %}

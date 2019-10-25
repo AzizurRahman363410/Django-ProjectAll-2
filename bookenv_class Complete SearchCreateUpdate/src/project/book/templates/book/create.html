@@ -1,0 +1,30 @@
+{% extends 'book/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Home Page Title {% endblock %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center py-5">Create View Page</h2>
+    <div class="con-8 offset-2">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+
+            <!-- {{form|crispy}} -->
+            <table>{{ form.as_table }}</table>
+
+
+
+            <!-- every individual feild -->
+            <!-- {{ form.title|as_crispy_field }} -->
+
+
+            <input type="submit" name="submit" value="Create" class="btn btn-success w-100 mt-md-5 py-2">
+        </form>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

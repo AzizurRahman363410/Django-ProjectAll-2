@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+Detail Page
+{% endblock title %}
+{% block content %}
+  <h1 class="text-center bg-warning py-2">Detail Page</h1>
+  <div class="col-md-4 product simpleCart_shelfItem text-center">
+        <a href="#"><img src="{{ product_list.image.url }}" alt="" style="height: 435px;" /></a>
+       
+        <a class="product_name" href=#">{{product_list.title}}</a>
+        <p><a class="item_add" href="#"><i></i> <span class="item_price">${{product_list.price}}</span></a></p>
+      </div>
+
+  
+{% endblock content %}

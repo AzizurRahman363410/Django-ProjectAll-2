@@ -1,0 +1,55 @@
+{% extends 'book/base.html' %}
+{% load static %}
+{% block title %}Home Page Title {% endblock %}
+{% block content %}
+<div class="container">
+
+    <!-- card section -->
+    <section class="card-section">
+        <h1>Search result for {{search_term}} </h1>
+        <div class="row">
+            {% if book_list%}
+            {% for book in book_list %}
+            <div class="col-4 py-3">
+                <div class="card card-cascade">
+                    <!-- Card image -->
+                    <div class="view view-cascade overlay">
+                        <img class="card-img-top" src="{% if book.image %}
+                        {{book.image.url}}
+                        {% else %}
+                       {% static 'img/kids4.jpeg' %}
+                       {% endif %}" alt="Card image cap">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Title -->
+                        <h4 class="card-title"><strong>{{ book.title }}</strong></h4>
+                        <!-- Subtitle -->
+                        <h6 class="font-weight-bold indigo-text py-2">Authors: {{ book.authors }}</h6>
+                        <!-- Text -->
+                        <p class="card-text">{{ book.desc|truncatechars:50 }}</p>
+                        <h6 class="font-weight-bold indigo-text py-2">Publisher: {{ book.publisher }}</h6>
+                        <small class="">{{ book.publication_date }}</small>
+
+
+                        <!-- Card footer -->
+                        <div class="card-footer text-muted text-center">
+                            <a href="{% url 'book:details' book.pk %}" class=" btn bg-success">View</a>
+                            <a href="" class=" btn btn-primary">Update</a>
+                            <a href="" class=" btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>You don't have any book list.</p>
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+{% endblock  %}

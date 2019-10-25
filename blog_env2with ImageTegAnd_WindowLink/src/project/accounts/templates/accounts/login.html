@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog list Page Title {% endblock %}
+{% block header %} Welcome To Login Page {% endblock %}
+
+{% block content %}
+<!--<h1 class="text-center">Welcome To Login Page</h1>-->
+{{error}}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <form method="POST" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
+                       placeholder="Enter username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" class="form-control" id="password1" placeholder="Password" name="password1">
+            </div>
+                <button type="submit " class="btn btn-primary mb-5 form-control">login</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

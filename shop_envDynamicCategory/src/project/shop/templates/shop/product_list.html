@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center"> Product List Page </h1>
+
+{% if category %}<h4>Category</h4>{% else%}<h4>Products</h4>{% endif %}
+
+
+    <li  {% if not category %}class="selected"{% endif %} >
+           <a href="{% url 'shop:product_list' %}"> All</a><br>
+    </li>
+
+
+    {% for c in categories %}
+    <li>
+        <a href="{{ c.get_absolute_url }}">{{c.name}}</a><br>
+    </li>
+    {% endfor %}
+
+<!--    for product view-->
+
+    <h1 class="text-center" style="padding-top:200px;">For Products Views</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-4">
+            <h3>name:{{product.name}}</h3>
+            <img class="img_fluid w-100" src="{{ product.image.url }}" alt="image">
+            <h5>description:{{product.description}}</h5>
+            <h6>price:{{product.price}}</h6>
+            <h6>stock:{{product.stock}}</h6>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+{% endblock %}

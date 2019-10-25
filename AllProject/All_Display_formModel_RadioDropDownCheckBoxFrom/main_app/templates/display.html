@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+Display Page
+{% endblock title %}
+{% block content %}
+<h1 class="text-center bg-warning py-2 mt-5">Display All </h1>
+
+
+<div class="row">
+
+  {% for post in all_post %}
+  <div class="col-8 offset-2 my-4">
+    <h3>Email : {{post.email}}</h3>
+    <h3>Password : {{post.password}}</h3>
+    <h3>Dropdown : {{post.dropdown}}</h3>
+    <h3>gender : {{post.gender}}</h3>
+    <h3>sports : {{post.sports|slice:"1:-1"}}</h3>
+
+    <p>................</p>
+  </div>
+
+
+  {% endfor %}
+
+
+</div>
+
+{% endblock content %}

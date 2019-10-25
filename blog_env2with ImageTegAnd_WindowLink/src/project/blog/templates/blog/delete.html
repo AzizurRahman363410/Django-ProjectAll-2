@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog Create Page Title {% endblock %}
+{% block header %}Hi, Welcome to blog Delete Page {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-8 offset-2 bg-dark mb-3">
+        <form class="py-2" method="post" action="">
+            {% csrf_token %}
+            <h3 class="bg-danger text-light text-center">Are you sure delete this item ??????????</h3>
+            <div class="text-success mb-5 mt-3">
+                <h2>{{blog.title}}</h2>
+            </div>
+            <div class="">
+                 <button class="btn btn-danger my-2 form-control font-weight-bold" type="submit">delete</button>
+            </div>
+        </form>
+        <div class="text-center pt-4" style="padding-bottom:200px;text-decoration:none; list_style:none;">
+            <a href="{% url 'blog:home' %}" class="style-none form-control bg-success text-light text-decoration-none">No</a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
