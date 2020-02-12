@@ -11,7 +11,7 @@ configobj==5.0.6
 cryptography==2.7
 css==0.1
 CSStyle==0.1
-Django==2.2.3
+Django==2.2.10
 env==0.1.0
 future==0.17.1
 gunicorn==19.9.0
